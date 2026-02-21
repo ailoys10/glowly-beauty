@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-jost: 'Jost', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-jost);
+  background-color: #fffbf9;
+  color: #3d2c2c;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #fef9f5; }
+::-webkit-scrollbar-thumb { background: #f2d9c9; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #ffc9d5; }
+
+/* Selection */
+::selection { background: #ffc9d5; color: #3d2c2c; }
+
+@layer utilities {
+  .font-display { font-family: var(--font-cormorant); }
+  .font-body { font-family: var(--font-jost); }
+}
+
+/* Shimmer animation for skeleton loading */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: shimmer 1.5s infinite;
+}
